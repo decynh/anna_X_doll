@@ -1,13 +1,17 @@
+import styles from "./Header.module.css";
+
 function Header() {
   return (
-    <header className="header">
-      <div className="logo">ANNA X DOLL</div>
+    <header className={styles.header}>
+      <div className={styles.logo}>YUNAHYEON</div>
 
-      <nav className="nav">
-        <a href="#gallery">GALLERY</a>
+      <nav className={styles.nav}>
         <a href="#about">ABOUT</a>
+        <a href="#work">WORK</a>
         <a href="#contact">CONTACT</a>
       </nav>
+
+      
     </header>
   );
 }
