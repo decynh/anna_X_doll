@@ -1,28 +1,13 @@
-import styles from "./Header.module.css";
-
 function Header() {
   return (
-    <header className={styles.header}>
+    <header className="header">
+      <div className="logo">ANNA X DOLL</div>
 
-      <div className={styles.logo}>
-        Anna x Doll
-      </div>
-
-      <nav className={styles.menu}>
-        <a href="/">Home</a>
-        <a href="/">Gallery</a>
-        <a href="/">About</a>
+      <nav className="nav">
+        <a href="#gallery">GALLERY</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
       </nav>
-
-      <div></div>
-
-      <div className="introduce">
-        <h6> 작은소제목 </h6>
-        <h3> 큰 문장 test </h3>
-        <button className="introducebutton">버튼</button>
-      </div>
-
-
     </header>
   );
 }
