@@ -1,35 +1,73 @@
 
 /* 메인 타이틀 */
 
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-.page {
-  width: 100%;
-  padding: 20px 32px 80px;
-  
+
+
+.hero {
+
+  padding: 40px;
 }
 
 .heroTitle {
-
-  margin: 15px 0 15px 0;
-  font-size: 60px;
-  line-height: 1;
+  height: 200px;
+  margin: 80px 0 40px;
+  position: relative;
+  font-family: sans-serif;
   text-align: center;
+  color: #2D24FF;
 }
 
-.heroTitle sup {
-  font-size: 15px;
+.heroTitle span {
+  position: absolute;
+
+  /* 같은 위치에 겹치기 */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 잔상 효과 */
+  transition: opacity 0.2s ease;
+
+  /* 한 줄 유지 */
+  white-space: nowrap;
+
+  font-size: 200px;
 
 }
 
+.fadeIn {
+  opacity: 1;
+}
 
-/* 사진 */
+.fadeOut {
+  opacity: 0;
+}
 
-.hero {
-  margin: 0;
-  padding: 0 30px 20px 30px;
+.heroTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+
+.heroKeywords {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.heroBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+  padding: 15px;
+  border-bottom: 2px solid #DDDDD8;
 }
 
 
@@ -37,6 +75,17 @@ h1, h2, h3, h4, h5, h6 {
 /* 소개 */
 
 .introduce {
+    width: 100%;
+}
+
+.introduceTiTle {
+  padding: 40px 15px 0 15px;
+  
+  
+  
+}
+
+/* .introduce {
   display: flex;
   height: 230px;
   flex-direction: column;
@@ -44,7 +93,6 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  background: #FAFAF7
   
 }
 .introduce h6 {
@@ -67,4 +115,77 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.7;
 
   color: #776e68;
+} */
+
+
+/* 어바웃 페이지 */
+/* About */
+
+.about {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 80px;
+
+  margin-top: 120px;
+  padding: 70px 15px;
+
+  border-top: 1px solid #ddd;
 }
+
+.aboutLabel,
+.skillLabel {
+  margin-bottom: 35px;
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D24FF;
+}
+
+.aboutText h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.skills ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.skills li {
+  padding: 10px 0;
+
+  font-size: 14px;
+
+  border-bottom: 1px solid #eee;
+}
+
+
+/* 모바일 */
+
+@media (max-width: 768px) {
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 50px;
+
+    margin-top: 80px;
+    padding: 50px 15px;
+  }
+
+  .aboutText h2 {
+    font-size: 25px;
+  }
+
+}
+  .heroBottom {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .heroTitle {
+    height: 100px;
+    margin: 60px 0 30px;
+    font-size: 64px;
+  }
