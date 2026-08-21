@@ -1,5 +1,7 @@
 
-/* 메인 타이틀 */
+/* ==================================================
+   제목 요소 기본 여백 초기화
+   ================================================== */
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -8,30 +10,89 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+/* 히어로 전체 영역용 클래스 - 현재 JSX에서는 사용하지 않음 */
 .hero {
-
   padding: 40px;
 }
 
+/* ==================================================
+   메인 타이틀 영역
+   - PORTFOLIO와 AX PLANNING이 같은 위치에서 교체됨
+   - ::before / ::after 물감 장식의 기준 영역이기도 함
+   ================================================== */
 .heroTitle {
+  /* 큰 타이틀이 들어갈 고정 높이 */
   height: 200px;
-  margin: 80px 0 40px;
+  /* 위쪽 80px / 좌우 0 / 아래쪽 80px */
+  margin: 80px 0 80px;
+  /* 자식 span과 물감 장식을 절대 배치하기 위한 기준 */
   position: relative;
-  font-family: sans-serif;
   text-align: center;
   color: #2D24FF;
+  /* 음수 z-index 물감이 다른 영역 뒤로 빠지는 것을 방지 */
+  isolation: isolate;
 }
 
+/* 파란색과 주황색 물감 장식의 공통 설정 */
+.heroTitle::before,
+.heroTitle::after {
+  /* 가상 요소를 화면에 생성 */
+  content: "";
+  position: absolute;
+  /* 글자 뒤에 배치 */
+  z-index: -1;
+  border-radius: 50%;
+  /* 장식이 마우스 이벤트를 가로채지 않도록 설정 */
+  pointer-events: none;
+  /* 호버 시 크기와 투명도가 부드럽게 변함 */
+  transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+/* 타이틀 왼쪽의 파란색 물감 번짐 */
+.heroTitle::before {
+  width: 230px;
+  height: 115px;
+  left: 13%;
+  top: 38%;
+  opacity: 0.15;
+  /* 작은 원 2개 = 튄 방울 / 큰 타원 = 번진 물감 본체 */
+  background:
+    radial-gradient(ellipse at center, #2d24ff 0 44%, transparent 72%);
+  transform: rotate(-8deg);
+  /* 경계를 살짝 흐리게 만들어 물감 번짐 표현 */
+  filter: blur(1px);
+}
+
+/* 타이틀 오른쪽 아래의 주황색 물감 번짐 */
+.heroTitle::after {
+  width: 150px;
+  height: 90px;
+  right: 14%;
+  bottom: 6%;
+  opacity: 0.12;
+  background:
+    radial-gradient(ellipse at center, #ff5c35 0 42%, transparent 70%);
+  transform: rotate(12deg);
+}
+
+
+
+/* PORTFOLIO / AX PLANNING 두 문구 공통 스타일 */
 .heroTitle span {
   position: absolute;
+  /* 물감이 튄 듯한 커스텀 폰트는 이 두 문구에만 적용 */
+  font-family: "SSFaithfulness", sans-serif;
+  font-weight: 300;
+  /* 음수일수록 글자 사이 간격이 좁아짐 */
+  letter-spacing: -0.06em;
 
   /* 같은 위치에 겹치기 */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 
-  /* 잔상 효과 */
-  transition: opacity 0.2s ease;
+  /* 문구가 교체될 때 나타나고 사라지는 효과 */
+  transition: opacity 0.28s ease, transform 0.45s ease;
 
   /* 한 줄 유지 */
   white-space: nowrap;
@@ -40,39 +101,62 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+/* 현재 보여줄 타이틀 문구 */
 .fadeIn {
   opacity: 1;
 }
 
+/* 현재 숨길 타이틀 문구 - 공간은 유지하고 투명하게 처리 */
 .fadeOut {
   opacity: 0;
 }
 
+/* 타이틀 위 PORTFOLIO / 2026 정보 줄 */
 .heroTop {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 18px 24px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
 }
 
-
+/* 타이틀 아래 '반복되는 업무를...' 소개 문구 */
 .heroKeywords {
   display: flex;
   text-align: center;
   justify-content: center;
+  /* 타이틀과 설명 문구 사이의 실제 간격 */
+  padding-top: 60px;
+  font-size: 15px;
+  line-height: 1.75;
 }
 
+/* 설명 문구 위의 작은 주황색 별 장식 */
+.heroKeywords span::before {
+  content: "✦";
+  display: block;
+  margin-bottom: 14px;
+  color: #ff5c35;
+  font-size: 12px;
+}
+
+/* 히어로 가장 아래에 나열된 이름/직무/임시 문구 영역 */
 .heroBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 80px;
-  padding: 15px;
-  border-bottom: 2px solid #DDDDD8;
+  padding: 18px 24px;
+  border-bottom: 1px solid #c9c8c1;
+  font-size: 10px;
+  letter-spacing: 0.08em;
 }
 
 
 
-/* 소개 */
+/* ==================================================
+   프로젝트 소개 카드 목록 영역
+   ================================================== */
 
 .introduce {
     width: 100%;
@@ -118,12 +202,14 @@ h1, h2, h3, h4, h5, h6 {
 } */
 
 
-/* 어바웃 페이지 */
-/* About */
+/* ==================================================
+   About / Skill 영역
+   - 왼쪽 2 : 오른쪽 1 비율의 2단 그리드
+   ================================================== */
 
 .about {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr; /* About 2 : Skill 1 */
   gap: 80px;
 
   margin-top: 120px;
@@ -132,6 +218,7 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid #ddd;
 }
 
+/* ABOUT, SKILL 작은 파란색 라벨 공통 스타일 */
 .aboutLabel,
 .skillLabel {
   margin-bottom: 35px;
@@ -141,12 +228,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #2D24FF;
 }
 
+/* About의 큰 한국어 소개 문장 */
 .aboutText h2 {
   font-size: 32px;
   font-weight: 500;
   line-height: 1.45;
 }
 
+/* Skill 목록의 브라우저 기본 점과 여백 제거 */
 .skills ul {
   margin: 0;
   padding: 0;
@@ -154,6 +243,7 @@ h1, h2, h3, h4, h5, h6 {
   list-style: none;
 }
 
+/* 각 Skill 항목을 얇은 선으로 구분 */
 .skills li {
   padding: 10px 0;
 
@@ -163,11 +253,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* 모바일 */
+/* ==================================================
+   모바일 반응형 - 화면 폭 768px 이하
+   ================================================== */
 
 @media (max-width: 768px) {
 
+  .heroTitle {
+    /* 모바일에서는 타이틀 영역과 상하 여백을 축소 */
+    height: 100px;
+    margin: 60px 0 40px;
+  }
+
+  .heroTitle span {
+    /* 화면 너비에 따라 폰트 크기가 60~105px 사이로 변함 */
+    max-width: 94vw;
+    font-size: clamp(60px, 20vw, 105px);
+  }
+
+  .heroTitle::before {
+    /* 파란 물감 크기를 줄이고 화면 왼쪽으로 이동 */
+    left: -10%;
+    transform: scale(0.65) rotate(-8deg);
+  }
+
+  .heroTitle::after {
+    /* 주황 물감 크기를 줄이고 화면 오른쪽으로 이동 */
+    right: -8%;
+    transform: scale(0.65) rotate(12deg);
+  }
+
+  .heroKeywords {
+    padding-top: 30px;
+  }
+
+  .heroBottom {
+    /* 한 줄에 다 들어가지 않으면 다음 줄로 넘김 */
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
   .about {
+    /* 데스크톱 2단 구성을 모바일 1단으로 변경 */
     grid-template-columns: 1fr;
     gap: 50px;
 
@@ -180,12 +307,3 @@ h1, h2, h3, h4, h5, h6 {
   }
 
 }
-  .heroBottom {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  .heroTitle {
-    height: 100px;
-    margin: 60px 0 30px;
-    font-size: 64px;
-  }

@@ -1,27 +1,39 @@
 
-/* 헤더 */
+/* ==================================================
+   헤더 전체: 왼쪽 로고 / 오른쪽 내비게이션
+   ================================================== */
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  border-bottom: 2px solid #DDDDD8;
+  padding: 18px 24px;
+  border-bottom: 1px solid #c9c8c1; /* 히어로와 구분하는 선 */
 }
 
+/* 왼쪽 Attention 로고 */
 .logo {
   font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
 }
 
+/* 오른쪽 ABOUT / WORK / CONTACT 메뉴 묶음 */
 .nav {
   display: flex;
   gap: 24px;
 }
 
+/* 각 메뉴 링크 기본 상태 */
 .nav a {
   color: #222;
   text-decoration: none;
   font-size: 11px;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
 }
 
-
+/* 메뉴에 마우스를 올리면 메인 포인트 색상으로 변경 */
+.nav a:hover {
+  color: #2d24ff;
+}

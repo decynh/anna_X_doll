@@ -1,11 +1,33 @@
+/* ==================================================
+   커스텀 타이틀 폰트 등록
+   - 실제 적용 위치: HomePage.module.css의 .heroTitle span
+   - 여기서는 폰트를 불러오기만 하므로 모든 글자에 적용되지 않음
+   ================================================== */
+@font-face {
+  font-family: "SSFaithfulness";
+  src: url("/font/SSFaithfulness_otf.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* width와 height 계산에 padding, border까지 포함 */
 * {
   box-sizing: border-box;
 }
 
+/* 사이트 전체 기본 스타일 */
 body {
   margin: 0;
-  background-color: #ffffff;
+  /* 완전한 흰색보다 종이처럼 따뜻한 배경색 */
+  background-color: #f7f6f1;
   color: #222;
+  /* 일반 본문에는 커스텀 타이틀 폰트를 사용하지 않음 */
   font-family: Arial, sans-serif;
 }
 
+/* 드래그해서 선택한 텍스트 색상 */
+::selection {
+  background: #2d24ff;
+  color: #fff;
+}

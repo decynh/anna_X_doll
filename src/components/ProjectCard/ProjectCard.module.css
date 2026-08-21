@@ -1,54 +1,76 @@
+/* ==================================================
+   프로젝트 카드 한 개
+   - 왼쪽: 프로젝트 정보
+   - 오른쪽: 프로젝트 이미지
+   ================================================== */
 .card {
   display: grid;
+  /* 좌우를 같은 너비로 배치 */
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 40px;
 
-  padding: 40px 15px;
+  padding: 72px 24px;
+  border-bottom: 1px solid #c9c8c1;
+  /* 호버 배경색이 부드럽게 나타남 */
+  transition: background-color 0.35s ease;
 
 }
 
+/* 카드에 마우스를 올렸을 때 아주 옅은 파란색 배경 */
+.card:hover {
+  background-color: rgba(45, 36, 255, 0.035);
+}
 
+/* 번호, 제목, 카테고리, 설명, 버튼을 세로로 쌓는 영역 */
 .info {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-
+/* 01, 02, 03 프로젝트 번호 */
 .number {
     padding-bottom: 20px;
   font-size: 18px;
   color: #3155ff;
 }
 
-
+/* AUTO STUDIO 등 프로젝트 이름 */
 .title {
-  font-size: 27px;
-  font-weight: 700;
+  /* 화면 너비에 따라 32~64px 사이에서 유동적으로 변함 */
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
 }
 
-
+/* AI IMAGE AUTOMATION SYSTEM 카테고리 */
 .category {
   font-size: 15px;
   color: #555;
 }
 
-
+/* 프로젝트 한 줄 설명 */
 .description {
   font-size: 18px;
   line-height: 1.6;
   color: #777;
 }
 
-
+/* 프로젝트 대표 이미지 */
 .image {
   width: 100%;
   height: auto;
   object-fit: contain;
+  transition: transform 0.45s ease;
 }
 
+/* 카드 호버 시 이미지가 아주 살짝 축소되고 회전 */
+.card:hover .image {
+  transform: scale(0.985) rotate(-0.35deg);
+}
 
+/* VIEW PROJECT 버튼 */
 button {
   width: fit-content;
   border: none;
@@ -59,7 +81,7 @@ button {
   color:#3155ff;
 }
 
-
+/* 모바일: 카드의 좌우 2단 구성을 위아래 1단으로 변경 */
 @media(max-width:768px){
 
 .card{
